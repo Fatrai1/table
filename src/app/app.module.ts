@@ -12,6 +12,9 @@ import { NavigationComponent } from './common/navigation/navigation.component';
 import { ProductEditorComponent } from './pages/product-editor/product-editor.component';
 import { SorterPipe } from './pipe/sorter.pipe';
 import { FilterPipe } from './pipe/filter.pipe';
+import { SorterUpDownPipe } from './pipe/sorter-up-down.pipe';
+import { CustomerListComponent } from './pages/customer-list/customer-list.component';
+import { SidebarComponent } from './common/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +25,9 @@ import { FilterPipe } from './pipe/filter.pipe';
     ProductEditorComponent,
     SorterPipe,
     FilterPipe,
+    SorterUpDownPipe,
+    CustomerListComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,

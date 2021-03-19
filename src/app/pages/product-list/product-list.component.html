@@ -32,10 +32,10 @@
                     <td>{{ product.color }}</td>
                     <td>
                         <div>
-                            <button [routerLink]="['product/' + product.id]" class="btn btn-primary">
+                            <button [routerLink]="['product/' + product.id]" class="btn btn-primary bg">
                                 <i class="fa fa-pencil" aria-hidden="true"></i>
                             </button>
-                            <button (click)="deleteItem(product)" type="button" class="btn btn-danger">
+                            <button (click)="deleteItem(product)" type="button" class="btn btn-danger bg">
                                 <i class="fa fa-trash" aria-hidden="true"></i>
                             </button>
                         </div>
