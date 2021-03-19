@@ -1,27 +1,56 @@
-<table class="table">
-    <thead>
-        <tr>
-            <th>id</th>
-            <th>name</th>
-            <th>model</th>
-            <th>year</th>
-            <th>color</th>
-            <th>actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let product of productList$ | async">
-            <td>{{ product.id }}</td>
-            <td>{{ product.name }}</td>
-            <td>{{ product.model }}</td>
-            <td>{{ product.year }}</td>
-            <td>{{ product.color }}</td>
-            <td>
-                <button (click)="deleteItem(product)" type="button" class="btn btn-danger">
-                    <i class="fa fa-trash" aria-hidden="true"></i>
-                </button>
-            </td>
-        </tr>
+<div class="row">
+    <div class="col-12 mt-2">
+        <h1>Termék lista</h1>
+        <div class="col-8 offset-2">
+            <button class="btn btn-primary btn-block" [routerLink]="['product/'+0]">
+                <i class="fa fa-edit"></i>
+                Új termék hozzáadása
+            </button>
+        </div>
+        <div class="col-12 mt-2 mb-2 my-lg-4">
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="search" (keyup)="onChangePhrase($event)">
+            </form>
+        </div>
+        <table class="table table-striped">
+            <thead class="thead">
+                <tr>
+                    <th class="head" (click)="onColumnSelect('id')">id</th>
+                    <th class="head" (click)="onColumnSelect('name')">name</th>
+                    <th class="head" (click)="onColumnSelect('model')">model</th>
+                    <th class="head" (click)="onColumnSelect('year')">year</th>
+                    <th class="head" (click)="onColumnSelect('color')">color</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of productList$ | async | filter:'name':phrase | sorter: columnKey">
+                    <td>{{ product.id }}</td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.model }}</td>
+                    <td>{{ product.year }}</td>
+                    <td>{{ product.color }}</td>
+                    <td>
+                        <div>
+                            <button [routerLink]="['product/' + product.id]" class="btn btn-primary">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </button>
+                            <button (click)="deleteItem(product)" type="button" class="btn btn-danger">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+    
+            </tbody>
+        </table>
+    </div>
+</div>
 
-    </tbody>
-</table>
+
+<!-- mwlConfirmationPopover
+                [popoverTitle]="popoverTitle"
+                [popoverMessage]="popoverMessage"
+                placement="left"
+                (confirm)="deleteItem(product)"
+                (cancel)="cancelClicked=true" -->
