@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Address } from 'src/app/model/address';
+import { Customer } from 'src/app/model/customer';
+import { CustomerService } from 'src/app/service/customer.service';
 
 @Component({
   selector: 'app-customer-list',
@@ -7,9 +11,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomerListComponent implements OnInit {
 
-  constructor() { }
+  phrase: string = '';
+  direction: boolean = false;
+  key: number | string = '';
+  columnKey: string = '';
+  filterKey: string = 'firstName';
+
+  filterKeys: string[] = (Object.keys(new Customer()).concat(Object.keys(new Address()))).filter(item => !item.includes("address")).filter(item => !item.includes("notes"));
+
+  customerList$: Observable<Customer[]> = this.customerService.getAll();
+
+  constructor(private customerService: CustomerService) { }
 
   ngOnInit(): void {
+    this.customerService.getAll();
   }
 
+  onColumnSelect(key: string): void {
+    this.columnKey = key;
+  }
+
+  onChangePhrase(event: any): void {
+    this.phrase = (event.target as HTMLInputElement).value;
+  }
+
+  deleteItem(customer: Customer): void {
+    if(!window.confirm("Biztosan törölni akrja?")) {
+      return;
+    }
+    this.customerService.remove(customer).subscribe(
+      () => location.reload()
+    );
+  }
 }

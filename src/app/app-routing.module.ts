@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from 'src/app/pages/home/home.component';
 import { ProductListComponent } from 'src/app/pages/product-list/product-list.component';
 import { ProductEditorComponent } from 'src/app/pages/product-editor/product-editor.component';
+import { CustomerListComponent } from './pages/customer-list/customer-list.component';
 
 const routes: Routes = [
   {
@@ -16,7 +17,11 @@ const routes: Routes = [
   },
   {
     path: 'product-list/product/:id',
-    component: ProductEditorComponent,
+    component: ProductEditorComponent
+  },
+  {
+    path: 'customer',
+    component: CustomerListComponent
   },
   {
     path: '**',

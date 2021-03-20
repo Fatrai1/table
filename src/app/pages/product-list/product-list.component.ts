@@ -30,7 +30,7 @@ export class ProductListComponent implements OnInit {
   }
 
   deleteItem(product: Product): void {
-    if (!window.confirm("Biztosan törölni akarod?")) {
+    if (!window.confirm("Biztosan törölni akarja?")) {
       return;
     }
     this.productService.remove(product).subscribe(
