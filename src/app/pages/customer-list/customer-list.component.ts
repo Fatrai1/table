@@ -12,7 +12,7 @@ import { CustomerService } from 'src/app/service/customer.service';
 export class CustomerListComponent implements OnInit {
 
   phrase: string = '';
-  direction: boolean = false;
+  direction: boolean = true;
   key: number | string = '';
   columnKey: string = '';
   filterKey: string = 'firstName';
@@ -29,6 +29,7 @@ export class CustomerListComponent implements OnInit {
 
   onColumnSelect(key: string): void {
     this.columnKey = key;
+    this.direction = !this.direction;
   }
 
   onChangePhrase(event: any): void {

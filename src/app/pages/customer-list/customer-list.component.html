@@ -30,7 +30,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let customer of customerList$ | async | filter:'name':phrase | sorterUpDown: columnKey">
+                <tr *ngFor="let customer of customerList$ | async | filter:'name':phrase | sorterUpDown: columnKey:direction">
                     <td>{{ customer.id }}</td>
                     <td>{{ customer.firstName }}</td>
                     <td>{{ customer.lastName }}</td>

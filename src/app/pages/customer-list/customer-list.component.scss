@@ -1,0 +1,9 @@
+.head {
+    cursor: pointer;
+    transition: .6s;
+}
+.head:hover {
+    background-color: rgb(101, 62, 241);
+    color: rgb(255, 254, 254);
+    user-select: none;
+}
