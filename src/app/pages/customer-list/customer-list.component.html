@@ -1,16 +1,28 @@
-<div class="container">
+<div class="rows">
     <div class="col-12 mt-2">
         <h1>Vásárló listája</h1>
-        <div class="col-8 offset-2">
-            <button class="btn btn-primary btn-block">
-                <i class="fa fa-edit"></i>
-                Új vásárló hozzáadása
-            </button>
-        </div>
-        <div class="col-12 mt-2 mb-2 my-lg-4">
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="search" (keyup)="onChangePhrase($event)">
-            </form>
+        <div class="row">
+            <div class="col-12 col-lg-5">
+                <button class="btn btn-primary btn-block" [routerLink]="['customer/'+0]">
+                    <i class="fa fa-edit"></i>
+                    Új vásárló hozzáadása
+                </button>
+            </div>
+            <div class="col-12 col-lg-3 ">
+                <select [(ngModel)]="filterKey" class="form-control">
+                    <option *ngFor="let key of filterKeys" [value]="key">
+                        {{ key }}
+                    </option>
+                </select>
+            </div>
+            <div class="col-12 col-lg-4">
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search"
+                        (keyup)="onChangePhrase($event)">
+                    <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+                </form>
+            </div>
+
         </div>
 
 
@@ -30,7 +42,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let customer of customerList$ | async | filter:'name':phrase | sorterUpDown: columnKey:direction">
+                <tr *ngFor="let customer of customerList$ | async | filter1:phrase:filterKey | sorterUpDown: columnKey:direction">
                     <td>{{ customer.id }}</td>
                     <td>{{ customer.firstName }}</td>
                     <td>{{ customer.lastName }}</td>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable} from 'rxjs';
+import { Customer } from 'src/app/model/customer';
 
 import { Product } from 'src/app/model/product';
 import { ProductService } from 'src/app/service/product.service';
@@ -12,8 +13,12 @@ import { ProductService } from 'src/app/service/product.service';
 export class ProductListComponent implements OnInit {
 
   productList$: Observable<Product[]> = this.productService.getAll();
-  phrase: string = '';
   columnKey: string = '';
+  selectedProductToDelete: Product = new Product();
+  
+  filterKeys: string[] = Object.keys(new Product());
+  filterKey: string = 'name';
+  phrase: string = '';
 
   constructor(private productService: ProductService,) { }
 
@@ -29,12 +34,15 @@ export class ProductListComponent implements OnInit {
     this.phrase = (event.target as HTMLInputElement).value;
   }
 
-  deleteItem(product: Product): void {
-    if (!window.confirm("Biztosan törölni akarja?")) {
-      return;
-    }
-    this.productService.remove(product).subscribe(
-      () => location.reload()
+  setToDelete(product: Product): void {
+    this.selectedProductToDelete = product;
+  }
+  deleteItem(): void {
+
+    this.productService.remove(this.selectedProductToDelete).subscribe(
+      () => {
+        this.productList$ = this.productService.getAll();
+      }
     );
   }
 }

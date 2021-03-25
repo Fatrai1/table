@@ -15,6 +15,7 @@ import { FilterPipe } from './pipe/filter.pipe';
 import { SorterUpDownPipe } from './pipe/sorter-up-down.pipe';
 import { CustomerListComponent } from './pages/customer-list/customer-list.component';
 import { SidebarComponent } from './common/sidebar/sidebar.component';
+import { Filter1Pipe } from './pipe/filter1.pipe';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { SidebarComponent } from './common/sidebar/sidebar.component';
     SorterUpDownPipe,
     CustomerListComponent,
     SidebarComponent,
+    Filter1Pipe,
   ],
   imports: [
     BrowserModule,

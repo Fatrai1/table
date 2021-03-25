@@ -11,13 +11,15 @@ import { CustomerService } from 'src/app/service/customer.service';
 })
 export class CustomerListComponent implements OnInit {
 
-  phrase: string = '';
   direction: boolean = true;
   key: number | string = '';
   columnKey: string = '';
-  filterKey: string = 'firstName';
+  
+  filterKey: string = 'name';
+  filterKeys: string[] = Object.keys(new Customer());
+  phrase: string = '';
 
-  filterKeys: string[] = (Object.keys(new Customer()).concat(Object.keys(new Address()))).filter(item => !item.includes("address")).filter(item => !item.includes("notes"));
+  // filterKeys: string[] = (Object.keys(new Customer()).concat(Object.keys(new Address()))).filter(item => !item.includes("address")).filter(item => !item.includes("notes"));
 
   customerList$: Observable<Customer[]> = this.customerService.getAll();
 

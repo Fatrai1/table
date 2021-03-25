@@ -1,20 +1,6 @@
 {
   "products": [
     {
-      "id": 8,
-      "name": "Ford",
-      "model": "Bronco I.",
-      "year": 1987,
-      "color": "Khaki"
-    },
-    {
-      "id": 9,
-      "name": "Chevrolet",
-      "model": "Malibu",
-      "year": 2002,
-      "color": "Pink"
-    },
-    {
       "id": 10,
       "name": "Ford",
       "model": "Escort",
@@ -653,39 +639,6 @@
     }
   ],
   "customer": [
-    {
-      "id": 1,
-      "firstName": "Martica",
-      "lastName": "Junkinson",
-      "zip": 33,
-      "country": "Indonesia",
-      "city": "Pasirlaja",
-      "street": "Hauk",
-      "email": "mjunkinson0@chronoengine.com",
-      "active": false
-    },
-    {
-      "id": 2,
-      "firstName": "Magnum",
-      "lastName": "Pley",
-      "zip": 100,
-      "country": "Japan",
-      "city": "Nakamura",
-      "street": "Bobwhite",
-      "email": "mpley1@accuweather.com",
-      "active": false
-    },
-    {
-      "id": 3,
-      "firstName": "Dagny",
-      "lastName": "Hefforde",
-      "zip": 61,
-      "country": "Israel",
-      "city": "Or Yehuda",
-      "street": "Pearson",
-      "email": "dhefforde2@nature.com",
-      "active": false
-    },
     {
       "id": 4,
       "firstName": "Sher",
