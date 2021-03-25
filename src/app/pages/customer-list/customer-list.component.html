@@ -1,4 +1,4 @@
-<div class="rows">
+<div class="row">
     <div class="col-12 mt-2">
         <h1>Vásárló listája</h1>
         <div class="row">
@@ -17,54 +17,55 @@
             </div>
             <div class="col-12 col-lg-4">
                 <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search"
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search..."
                         (keyup)="onChangePhrase($event)">
-                    <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
             </div>
+        </div>
+        <div class="row">
+            <table class="table table-striped">
+                <thead class="thead">
+                    <tr>
+                        <th class="head" (click)="onColumnSelect('id')">id</th>
+                        <th class="head" (click)="onColumnSelect('firstName')">firstName</th>
+                        <th class="head" (click)="onColumnSelect('lastName')">lastName</th>
+                        <th class="head" (click)="onColumnSelect('zip')">zip</th>
+                        <th class="head" (click)="onColumnSelect('country')">country</th>
+                        <th class="head" (click)="onColumnSelect('city')">city</th>
+                        <th class="head" (click)="onColumnSelect('street')">street</th>
+                        <th class="head" (click)="onColumnSelect('email')">email</th>
+                        <th class="head" (click)="onColumnSelect('active')">active</th>
+                        <th>Gombok</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let customer of customerList$ | async | filter1:phrase:filterKey | sorterUpDown: columnKey:direction">
+                        <td>{{ customer.id }}</td>
+                        <td>{{ customer.firstName }}</td>
+                        <td>{{ customer.lastName }}</td>
+                        <td>{{ customer.zip }}</td>
+                        <td>{{ customer.country }}</td>
+                        <td>{{ customer.city }}</td>
+                        <td>{{ customer.street }}</td>
+                        <td>{{ customer.email }}</td>
+                        <td>{{ customer.active }}</td>
+                        <td>
+                            <div class="btn-group">
+                                <button [routerLink]="['customer/' + customer.id]"  class="btn btn-primary">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                </button>
+                                <button (click)="deleteItem(customer)" type="button" class="btn btn-danger">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </td>
+    
+                    </tr>
+                </tbody>
+            </table>
 
         </div>
 
-
-        <table class="table table-striped">
-            <thead class="thead">
-                <tr>
-                    <th class="head" (click)="onColumnSelect('id')">id</th>
-                    <th class="head" (click)="onColumnSelect('firstName')">firstName</th>
-                    <th class="head" (click)="onColumnSelect('lastName')">lastName</th>
-                    <th class="head" (click)="onColumnSelect('zip')">zip</th>
-                    <th class="head" (click)="onColumnSelect('country')">country</th>
-                    <th class="head" (click)="onColumnSelect('city')">city</th>
-                    <th class="head" (click)="onColumnSelect('street')">street</th>
-                    <th class="head" (click)="onColumnSelect('email')">email</th>
-                    <th class="head" (click)="onColumnSelect('active')">active</th>
-                    <th>Gombok</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let customer of customerList$ | async | filter1:phrase:filterKey | sorterUpDown: columnKey:direction">
-                    <td>{{ customer.id }}</td>
-                    <td>{{ customer.firstName }}</td>
-                    <td>{{ customer.lastName }}</td>
-                    <td>{{ customer.zip }}</td>
-                    <td>{{ customer.country }}</td>
-                    <td>{{ customer.city }}</td>
-                    <td>{{ customer.street }}</td>
-                    <td>{{ customer.email }}</td>
-                    <td>{{ customer.active }}</td>
-                    <td>
-                        <div class="btn-group">
-                            <button class="btn btn-primary">
-                                <i class="fa fa-pencil" aria-hidden="true"></i>
-                            </button>
-                            <button (click)="deleteItem(customer)" type="button" class="btn btn-danger">
-                                <i class="fa fa-trash" aria-hidden="true"></i>
-                            </button>
-                        </div>
-                    </td>
-
-                </tr>
-            </tbody>
-        </table>
     </div>
 </div>

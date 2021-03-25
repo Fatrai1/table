@@ -1,0 +1,46 @@
+<div class="row">
+    <div *ngIf="customer$ | async as customer" class="col-6 offset-3 mt-3">
+        <h2>Update / Create Customer</h2>
+        <form #customerForm="ngForm" (ngSubmit)="onUpdate(customerForm, customer)">
+            <input name="id" type="hidden" [(ngModel)]="customer.id">
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <!-- Validation: min 8 char, max 40 char, required -->
+                <input id="firstName" class="form-control" type="text" name="firstName" [(ngModel)]="customer.firstName"
+                    pattern=".{3,20}" required>
+                <div [hidden]="customerForm.controls.firstName?.valid || customerForm.controls.firstName?.pristine" class="error-message">
+                    A név minimum 3 és maximum 20 karakterből állhat!
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="lastName"> Last Name</label>
+                <input id="lastName" class="form-control" name="lastName" type="text" [(ngModel)]="customer.lastName"
+                pattern=".{3,20}" required>
+                <div [hidden]="customerForm.controls.lastName?.valid || customerForm.controls.lastName?.pristine" class="error-message">
+                    A név minimum 3 és maximum 20 karakterből állhat!
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="zip">ZIP Number</label>
+                <input id="zip" name="zip" class="form-control" type="number" [(ngModel)]="customer.zip"
+                pattern="^\d{2,7}$" required>
+                <div [hidden]="customerForm.controls.zip?.valid || customerForm.controls.zip?.pristine" class="error-message">
+                    Az irányítószám minimum 2, maximum 7 számjegy lehet!
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="country">Country</label>
+                <input id="country" name="country" class="form-control" type="number" [(ngModel)]="customer.country"
+                pattern=".{4,20}" required>
+                <div [hidden]="customerForm.controls.country?.valid || customerForm.controls.country?.pristine" class="error-message">
+                   Az országnév minimum 4, maximum 20 karakter lehet!
+                </div>
+            </div>
+            <button [disabled]="customerForm.invalid || updating" type="submit" class="btn btn-primary btn-block mt-5">
+                <i *ngIf="!updating" class="fa fa-save"></i>
+                <i *ngIf="updating" class="fa fa-refreh"></i>
+
+            </button>
+        </form>
+    </div>
+</div>

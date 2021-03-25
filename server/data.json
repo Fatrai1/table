@@ -640,19 +640,8 @@
   ],
   "customer": [
     {
-      "id": 4,
-      "firstName": "Sher",
-      "lastName": "Tolchard",
-      "zip": 31,
-      "country": "China",
-      "city": "Baiheshan",
-      "street": "Milwaukee",
-      "email": "stolchard3@japanpost.jp",
-      "active": false
-    },
-    {
       "id": 5,
-      "firstName": "Stacie",
+      "firstName": "Stat",
       "lastName": "Labrone",
       "zip": 53,
       "country": "Serbia",
